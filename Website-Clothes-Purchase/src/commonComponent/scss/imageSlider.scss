@@ -1,0 +1,51 @@
+.common-slider-container {
+    width: 100%;
+    position: relative;
+    .common-left-arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        cursor: pointer;
+        z-index: 1;
+        :hover {
+            opacity: 0.5;
+        }
+    }
+    .common-right-arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 0;
+        cursor: pointer;
+        z-index: 1;
+        :hover {
+            opacity: 0.5;
+        }
+    }
+    .common-slider-image {
+        width: inherit;
+        animation: slideFromRight 2s ease forwards;
+    }
+}
+
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+
+    }
+    to {
+        transform: translateX(0)
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0)
+    }
+}
+
+
