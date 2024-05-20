@@ -1,0 +1,11 @@
+dll
+exe
+*.csproj.user
+launchSettings.json
+bin
+obj
+debug
+.vs
+.cache
+node_modules/
+dist/
