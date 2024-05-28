@@ -11,7 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --font-bold: 700
+  --font-bold: 700;
+  --border-color: #ccc
 }
 
 a {

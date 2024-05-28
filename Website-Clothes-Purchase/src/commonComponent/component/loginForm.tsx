@@ -4,8 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import React, { useState } from 'react'
 import { OverlayTrigger, Popover } from 'react-bootstrap'
 import { TextField, Box } from '@mui/material'
+import '../scss/loginForm.scss'
 
-export default function LoginPopup() {
+export default function LoginForm() {
     const [show, setShow] = useState<boolean>(false)
     const [isLogin, setIsLogin] = useState<boolean>(false)
 
@@ -59,7 +60,7 @@ export default function LoginPopup() {
 
     return (
         <React.Fragment>
-            <OverlayTrigger trigger='click' placement='bottom' overlay={isLogin ? FormInformationUser : FormLogin}>
+            <OverlayTrigger trigger='click' rootClose placement='bottom' overlay={isLogin ? FormInformationUser : FormLogin}>
                 <div style={{ display: 'flex', cursor: 'pointer', position: 'relative' }}>
                     <Avatar sx={{ marginRight: '8px' }}></Avatar>
                     <div className='common-header-login'>
