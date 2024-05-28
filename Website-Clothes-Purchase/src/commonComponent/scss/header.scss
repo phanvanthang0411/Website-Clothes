@@ -1,35 +1,45 @@
 .common-header {
-    padding: 15px 85px;
+    // padding: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    position: sticky;
+    right: 0;
+    top: 0;
+    left: 0;
+    padding: 0 32px;
+    background-color: #FFF;
+    // justify-content: space-between;
+    border-bottom: 1px solid #e8ebed;
     &-logo{
         cursor: pointer;
         img{
             width: 267px;
-            height: 40px;
+            height: 80px;
         }
     }
     &-search{
         display: flex;
         align-items: center;
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        padding: 0 8px;
         input{
-            color: black;
-            padding: 9px 50px 10px 9px;
+            // padding: 9px 10px 9px;
             font-size: 14px;
             font-weight: 500;
+            border: none;
             height: 100%;
             background-color: #ffffff;
             width: 100%;
-            border: 1px solid #ececec;
-            border-radius: 4px;
+            outline: none;
+            ::placeholder{
+                color: black;
+            }
         }
         >div{
             display: flex;
             height: 100%;
             padding: 8px 0;
-            background-color: black !important;
-            color: #ffffff !important;
             border-radius: 0 4px 4px 0;
         }
         >div:hover{
@@ -39,6 +49,7 @@
     &-right{
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: 50px;
         .common-header-login-title{
             font-size: 12px;

@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Typography } from '@mui/material'
 import image from '../../assets/image'
 import '../scss/header.scss'
-import LoginPopup from './loginPopup'
+import LoginForm from './loginForm'
 import { useLocation, Link } from 'react-router-dom'
 import { RoutePath } from '../../structure/router/utils'
 
@@ -15,7 +15,7 @@ export function Header() {
         <header className='common-header' id='header'>
             <div className='common-header-logo'>
                 <Link to={RoutePath.Index}>
-                    <img src={`${image.logoWeb}`} alt='logo-shop' />
+                    <img src={`${image.kevin_phan_logo}`} alt='logo-shop' />
                 </Link>
             </div>
             <div className='common-header-search'>
@@ -25,7 +25,7 @@ export function Header() {
                 </div>
             </div>
             <div className='common-header-right'>
-                <LoginPopup></LoginPopup>
+                <LoginForm></LoginForm>
                 <div className='common-header-right-cart'>
                     <AddShoppingCartIcon />
                     <Typography variant='body1' sx={{ marginLeft: '8px' }}>
