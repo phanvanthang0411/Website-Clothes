@@ -1,5 +1,4 @@
 .common-header {
-    // padding: 15px;
     display: flex;
     align-items: center;
     position: sticky;
@@ -7,59 +6,74 @@
     top: 0;
     left: 0;
     padding: 0 32px;
-    background-color: #FFF;
-    // justify-content: space-between;
-    border-bottom: 1px solid #e8ebed;
-    &-logo{
+    background-color: #fff;
+    z-index: 20;
+    &-logo {
+        display: flex;
+        align-items: center;
+        flex: 1 1;
         cursor: pointer;
-        img{
+        img {
             width: 267px;
             height: 80px;
         }
     }
-    &-search{
+    &-search {
         display: flex;
         align-items: center;
         border: 1px solid var(--border-color);
-        border-radius: 40px;
-        padding: 0 8px;
-        input{
-            // padding: 9px 10px 9px;
+        border-radius: 20px;
+        padding: 8px 10px 8px 16px;
+        flex: 1 1;
+        position: relative;
+        height: 40px;
+        transition:
+            border-color 0.2s ease-in-out,
+            border-width 0.2s ease-in-out;
+        &:focus-within {
+            border-color: var(--base-nav-color);
+            border-width: 2px;
+        }
+        input {
+            color: inherit;
             font-size: 14px;
-            font-weight: 500;
             border: none;
-            height: 100%;
-            background-color: #ffffff;
-            width: 100%;
+            background-color: inherit;
             outline: none;
-            ::placeholder{
-                color: black;
+            width: 85%;
+            ::placeholder {
+                color: inherit;
+            }
+            &:focus {
+                border: none;
+                outline: none;
             }
         }
-        >div{
+        > div {
             display: flex;
+            align-items: center;
+            border-left: 1px solid var(--border-color);
+            position: absolute;
             height: 100%;
-            padding: 8px 0;
-            border-radius: 0 4px 4px 0;
-        }
-        >div:hover{
-            opacity: 0.8;
+            right: 8px;
+            padding-left: 10px;
         }
     }
-    &-right{
+    &-right {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         gap: 50px;
-        .common-header-login-title{
+        flex: 1 1;
+        .common-header-login-title {
             font-size: 12px;
         }
-        .common-header-login-name{
+        .common-header-login-name {
             display: flex;
             align-items: center;
             font-size: 14px;
         }
-        .common-header-right-cart{
+        .common-header-right-cart {
             cursor: pointer;
             display: flex;
         }
