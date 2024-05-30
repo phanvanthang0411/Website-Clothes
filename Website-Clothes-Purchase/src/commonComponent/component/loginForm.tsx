@@ -1,66 +1,34 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { Avatar } from '@mui/material'
+import { Avatar, Box, TextField } from '@mui/material'
 import 'bootstrap/dist/css/bootstrap.css'
-import React, { useState } from 'react'
-import { OverlayTrigger, Popover } from 'react-bootstrap'
-import { TextField, Box } from '@mui/material'
+import { useState } from 'react'
+import { Popover } from 'antd'
+import 'antd/dist/reset.css'
 import '../scss/loginForm.scss'
 
 export default function LoginForm() {
     const [show, setShow] = useState<boolean>(false)
     const [isLogin, setIsLogin] = useState<boolean>(false)
 
-    const FormInformationUser = (
-        <Popover id='popover-positioned-bottom'>
-            <Popover.Header style={{ background: '#FFF' }}>
-                <div className='popover-title'>THÔNG TIN TÀI KHOẢN</div>
-            </Popover.Header>
-            <Popover.Body>
-                <div className='popover-body-name' style={{ fontWeight: '600' }}>
-                    Phan Văn Thắng
-                </div>
-                <div className='popover-body-account'>Tài khoản của tôi</div>
-                <div className='popover-body-list-address'>Danh sách địa chỉ</div>
-                <div className='popover-body-login-btn'>Đăng xuất</div>
-            </Popover.Body>
-        </Popover>
+    const title = (
+        <div style={{ textAlign: 'center', borderBottom: '1px solid var(--border-color)' }}>
+            <div className='common-form-login-title'>ĐĂNG NHẬP VÀO TÀI KHOẢN</div>
+            <div className='common-form-login-description'>Nhập email và mật khẩu của bạn:</div>
+        </div>
     )
-
-    const FormLogin = (
-        <Popover id='popover-positioned-bottom' style={{boxShadow: "0px 2px 12px #27313C29", borderRadius: '0'}}>
-            <Popover.Header style={{ background: '#FFF', textAlign: 'center' }}>
-                <div className='popover-title'>ĐĂNG NHẬP TÀI KHOẢN</div>
-                <div className='popover-description'>Nhập email và mật khẩu của bạn:</div>
-            </Popover.Header>
-            <Popover.Body>
-                <Box
-                    component='form'
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '30ch' }
-                    }}
-                    noValidate
-                    autoComplete='off'
-                >
-                    <TextField
-                        id='filled-error'
-                        label='Email'
-                        defaultValue=''
-                        variant='filled'
-                    />
-                    <TextField
-                        id='filled-error-helper-text'
-                        label='Mật khẩu'
-                        defaultValue=''
-                        variant='filled'
-                    />
-                </Box>
-            </Popover.Body>
-        </Popover>
+    const content = (
+        <Box component='form' noValidate>
+            <div>
+                <TextField id='input-email' sx={{ width: '100%', height: '42px'}} label='Email' variant='outlined' />
+            </div>
+            <TextField id='input-password' sx={{ width: '100%' }} label='Mật khẩu' variant='outlined' />
+            <button>đăng nhập</button>
+        </Box>
     )
 
     return (
-        <React.Fragment>
-            <OverlayTrigger trigger='click' rootClose placement='bottom' overlay={isLogin ? FormInformationUser : FormLogin}>
+        <>
+            <Popover content={content} title={title} placement='bottom' trigger='click'>
                 <div style={{ display: 'flex', cursor: 'pointer', position: 'relative' }}>
                     <Avatar sx={{ marginRight: '8px' }}></Avatar>
                     <div className='common-header-login'>
@@ -73,7 +41,7 @@ export default function LoginForm() {
                         </div>
                     </div>
                 </div>
-            </OverlayTrigger>
-        </React.Fragment>
+            </Popover>
+        </>
     )
 }

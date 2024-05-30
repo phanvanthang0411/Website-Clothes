@@ -7,7 +7,7 @@
         transform: translate(0, -50%);
         cursor: pointer;
         z-index: 1;
-        :hover {
+        &:hover {
             opacity: 0.5;
         }
     }
@@ -18,34 +18,34 @@
         right: 0;
         cursor: pointer;
         z-index: 1;
-        :hover {
+        &:hover {
             opacity: 0.5;
         }
     }
     .common-slider-image {
         width: inherit;
-        animation: slideFromRight 2s ease forwards;
+        // animation: slideFromRight 2s ease forwards;
     }
 }
 
 
-@keyframes slideFromLeft {
-    from {
-        transform: translateX(-100%);
+// @keyframes slideFromLeft {
+//     from {
+//         transform: translateX(-100%);
 
-    }
-    to {
-        transform: translateX(0)
-    }
-}
+//     }
+//     to {
+//         transform: translateX(0)
+//     }
+// }
 
-@keyframes slideFromRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0)
-    }
-}
+// @keyframes slideFromRight {
+//     from {
+//         transform: translateX(100%);
+//     }
+//     to {
+//         transform: translateX(0)
+//     }
+// }
 
 

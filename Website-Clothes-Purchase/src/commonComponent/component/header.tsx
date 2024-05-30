@@ -1,15 +1,19 @@
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import ClearIcon from '@mui/icons-material/Clear'
+import LocalMallIcon from '@mui/icons-material/LocalMall'
 import SearchIcon from '@mui/icons-material/Search'
-import { Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import image from '../../assets/image'
+import { RoutePath } from '../../structure/router/utils'
 import '../scss/header.scss'
 import LoginForm from './loginForm'
-import { useLocation, Link } from 'react-router-dom'
-import { RoutePath } from '../../structure/router/utils'
 
 export function Header() {
-    const location = useLocation()
-    console.log(location)
+    const [currentValueSearch, setCurrentValueSearch] = useState<string>('')
+
+    const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCurrentValueSearch(e.target.value)
+    }
 
     return (
         <header className='common-header' id='header'>
@@ -19,18 +23,28 @@ export function Header() {
                 </Link>
             </div>
             <div className='common-header-search'>
-                <input className='input-search' type='text' placeholder='Tìm kiếm sản phẩm...' required />
+                <input
+                    className='input-search'
+                    type='text'
+                    placeholder='Tìm kiếm sản phẩm...'
+                    value={currentValueSearch}
+                    onChange={handleChangeValue}
+                />
+                {currentValueSearch?.length > 0 && (
+                    <ClearIcon
+                        sx={{ cursor: 'pointer', opacity: '0.6' }}
+                        onClick={() => setCurrentValueSearch('')}
+                    ></ClearIcon>
+                )}
                 <div>
-                    <SearchIcon sx={{ width: '50px', cursor: 'pointer' }}></SearchIcon>
+                    <SearchIcon sx={{ cursor: 'pointer', opacity: '0.6' }}></SearchIcon>
                 </div>
             </div>
             <div className='common-header-right'>
                 <LoginForm></LoginForm>
                 <div className='common-header-right-cart'>
-                    <AddShoppingCartIcon />
-                    <Typography variant='body1' sx={{ marginLeft: '8px' }}>
-                        Giỏ hàng
-                    </Typography>
+                    <LocalMallIcon sx={{ fontSize: '20px', opacity: '0.6' }} />
+                    <span style={{ marginLeft: '8px' }}>Giỏ hàng</span>
                 </div>
             </div>
         </header>

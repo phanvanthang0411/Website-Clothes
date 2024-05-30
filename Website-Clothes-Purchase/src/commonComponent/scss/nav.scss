@@ -2,10 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .common-navs-item{
+    .common-navs-item {
         padding: 10px 0 15px;
-        margin-right: 25px;
-        font-size: 14px;
+        margin: 0 40px;
+        font-size: 16px;
         font-weight: var(--font-bold);
+        cursor: pointer;
+        &:hover {
+            color: var(--base-nav-color);
+        }
     }
 }
