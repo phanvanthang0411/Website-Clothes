@@ -68,10 +68,14 @@
         .common-header-login-title {
             font-size: 12px;
         }
-        .common-header-login-name {
+        .common-header-login-info {
+            width: 100px;
             display: flex;
             align-items: center;
             font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .common-header-right-cart {
             cursor: pointer;

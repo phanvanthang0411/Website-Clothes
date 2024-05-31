@@ -1,4 +1,34 @@
-.common-form-login-description{
-    font-weight: 400;
-    padding: 8px;
+.form-login {
+    &-header {
+        &-title {
+            font-size: 16px;
+        }
+        &-description {
+            font-weight: 400;
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+    &-body {
+        padding: 8px 0;
+        width: 300px;
+        &-item {
+            height: 42px;
+            margin: 8px 0 4px 0;
+            border-radius: 0;
+            &-icon{
+                color: #336cbd;
+            }
+            &-button {
+                margin-top: 8px;
+                background-color: #336cbd;
+                height: 42px;
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+        &-footer{
+            text-align: center;
+        }
+    }
 }
