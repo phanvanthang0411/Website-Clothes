@@ -12,7 +12,7 @@ export default function FullLayout() {
         <div className='main-body'>
             <Header></Header>
             <BaseNavigation></BaseNavigation>
-            <ImageSlider slides={slides}></ImageSlider>
+            {/* <ImageSlider slides={slides}></ImageSlider> */}
         </div>
     )
 }
