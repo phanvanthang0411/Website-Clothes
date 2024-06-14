@@ -1,5 +1,4 @@
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { useEffect, useState, useRef } from 'react'
 import '../../scss/imageSlider.scss'
 
@@ -9,49 +8,65 @@ interface sliderProps {
 
 function ImageSlider({ slides }: sliderProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0)
-    const imgRef = useRef(null)
+    const imgRef = useRef<HTMLImageElement>(null)
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1
-            setCurrentIndex(newIndex)
-        }, 3000)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         onClickNext()
+    //     }, 3000)
+    // }, [3000])
 
-        // return clearTimeout(timeoutId)
-    }, [currentIndex, 3000])
+    // useEffect(() => {
+    //     slides[currentIndex].style = { animation: 'slideIn 2s ease forwards' }
+    // }, [currentIndex])
 
     const onClickPrevious = () => {
         const newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1
+        if (imgRef.current) {
+            let el = imgRef.current
+            el.className += 'active'
+            el.style.animation = 'slideToLeft 2s ease forwards'
+        }
+        // slides[newIndex].style = { animation: 'slideIn 2s ease forwards' }
         setCurrentIndex(newIndex)
     }
 
     const onClickNext = () => {
-        debugger
-        let elementImg = imgRef.current;
-        // elementImg.style.animation = "slideFromRight 2s ease forwards"
         const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1
+        // slides[currentIndex].style = { animation: 'slideOut 2s ease forwards' }
+        if (imgRef.current) {
+            let el = imgRef.current
+            el.style.animation = 'slideFromRight 2s ease forwards'
+        }
+        // slides[newIndex].style = { animation: 'slideIn 2s ease forwards' }
         setCurrentIndex(newIndex)
     }
 
     return (
         <div className='common-slider-container'>
             <div
-                className='common-left-arrow-btn'
+                className='common-slider-btn-arrow-left'
                 onClick={() => {
                     onClickPrevious()
                 }}
             >
-                <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
+                <LeftOutlined></LeftOutlined>
             </div>
             <div
-                className='common-right-arrow-btn'
+                className='common-slider-btn-arrow-right'
                 onClick={() => {
                     onClickNext()
                 }}
             >
-                <ArrowForwardIosIcon></ArrowForwardIosIcon>
+                <RightOutlined></RightOutlined>
             </div>
-            <img ref={imgRef} className='common-slider-image' src={slides[currentIndex].url} alt='img-slide' />
+            <img
+                ref={imgRef}
+                // style={slides[currentIndex].style}
+                className='common-slider-image'
+                src={slides[currentIndex].url}
+                alt='img-slide'
+            />
         </div>
     )
 }

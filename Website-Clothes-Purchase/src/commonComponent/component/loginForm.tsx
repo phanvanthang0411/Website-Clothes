@@ -1,6 +1,6 @@
 import { DownOutlined, LockOutlined, UpOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar } from '@mui/material'
-import { Button, Form, Input, Popover, Tooltip } from 'antd'
+import { Button, Form, Input, Popover } from 'antd'
 import 'antd/dist/reset.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from 'react'
@@ -8,12 +8,15 @@ import '../scss/loginForm.scss'
 
 export default function LoginForm() {
     const [isLogin] = useState<boolean>(false)
-    const [visiblePopover, setVisiblePopover] = useState<boolean>(false)
-    const [userName, setUserName] = useState<string>("Phan Van Thang")
+    const [openPopover, setOpenPopover] = useState<boolean>(false)
+    const [userName, setUserName] = useState<string>('Phan Van Thang')
 
     // const onFinish = (values : ChangeEvent<HTML>) => {
     //     console.log('Received values of form: ', values)
     // }
+    const handleOpenPopover = (open: boolean) => {
+        setOpenPopover(open)
+    }
 
     const title = (
         <div
@@ -86,20 +89,32 @@ export default function LoginForm() {
 
     return (
         <>
-            <Popover content={content} title={title} placement='bottom' trigger='click'>
-                <div style={{ display: 'flex', cursor: 'pointer', position: 'relative' }}>
+            <Popover
+                content={content}
+                title={title}
+                placement='bottomRight'
+                trigger='click'
+                open={openPopover}
+                onOpenChange={handleOpenPopover}
+            >
+                <div
+                    style={{ display: 'flex', cursor: 'pointer', maxWidth: '200px' }}
+                    onClick={() => setOpenPopover(!openPopover)}
+                >
                     <Avatar sx={{ marginRight: '8px' }}></Avatar>
-                    <div className='common-header-login' onClick={() => setVisiblePopover(!visiblePopover)}>
+                    <div className='common-header-login'>
                         <div className='common-header-login-title'>
                             {isLogin ? 'Đăng nhập/Đăng ký' : 'Tài khoản của'}
                         </div>
-                        <Tooltip trigger={'hover'} title={userName}>
-                            <div className='common-header-login-info'>
-                                {isLogin ? 'Tài khoản của tôi' : `${userName}`}
-                            </div>
-                        </Tooltip>
+                        <span className='common-header-login-infor'>
+                            {isLogin ? 'Tài khoản của tôi' : `${userName} `}{' '}
+                            {openPopover ? (
+                                <UpOutlined style={{ fontSize: '14px', marginLeft: '8px' }}></UpOutlined>
+                            ) : (
+                                <DownOutlined style={{ fontSize: '14px', marginLeft: '8px' }}></DownOutlined>
+                            )}
+                        </span>
                     </div>
-                    {visiblePopover ? <UpOutlined></UpOutlined> : <DownOutlined></DownOutlined>}
                 </div>
             </Popover>
         </>
