@@ -1,41 +1,51 @@
-import React from 'react';
+import React from 'react'
 import '../scss/nav.scss'
+import { Dropdown, Menu } from 'antd'
+import { Link } from 'react-router-dom'
+import { RoutePath } from '../../structure/router/utils'
 
 interface NavItem {
     id: string
     text: string
     url: string
+    item: Array<string>
 }
 const getNavs = (): NavItem[] => [
     {
         id: 'nav-shop',
         text: 'CỬA HÀNG',
-        url: '/page/about-us'
+        url: RoutePath.HomeShop,
+        item: []
     },
     {
         id: 'nav-product',
         text: 'SẢN PHẨM',
-        url: '/page/about-us'
+        url: RoutePath.Collection,
+        item: ['ÁO POLO', 'QUẦN', 'SƠ MI']
     },
     {
         id: 'nav-policy-guideline',
         text: 'CHÍNH SÁCH-HƯỚNG DẪN',
-        url: '/page/about-us'
+        url: RoutePath.Index,
+        item: ['Chính sách đổi trả', 'Chính sách bảo hành']
     },
     {
-        id: 'nav-fashion-news',
+        id: 'nav-blog-news',
         text: 'TIN TỨC THỜI TRANG',
-        url: '/page/about-us'
+        url: RoutePath.BlogNews,
+        item: []
     },
     {
         id: 'nav-check-order',
         text: 'KIỂM TRA ĐƠN HÀNG',
-        url: '/page/about-us'
+        url: RoutePath.CheckOrder,
+        item: []
     },
     {
         id: 'nav-contact',
         text: 'LIÊN HỆ',
-        url: '/page/about-us'
+        url: RoutePath.Contact,
+        item: []
     }
 ]
 export class BaseNavigation extends React.Component<{}, {}> {
@@ -48,11 +58,27 @@ export class BaseNavigation extends React.Component<{}, {}> {
         const navigation: NavItem[] = getNavs()
         return (
             <div className='common-navs'>
-                {navigation.map((item, index) => {
+                {navigation.map((_v, index) => {
                     return (
-                        <div className='common-navs-item' key={`navigation-item-${index}`}>
-                            {item.text}
-                        </div>
+                        <Dropdown
+                            overlay={
+                                <Menu>
+                                    {_v.item.length > 0 &&
+                                        _v.item.map((a) => {
+                                            return (
+                                                <Menu.Item key='0'>
+                                                    <Link to={'/'}>{a}</Link>
+                                                </Menu.Item>
+                                            )
+                                        })}
+                                </Menu>
+                            }
+                            trigger={['hover']}
+                        >
+                            <div className='common-navs-item' key={`navigation-item-${index}`}>
+                                <Link to={_v.url}>{_v.text}</Link>
+                            </div>
+                        </Dropdown>
                     )
                 })}
             </div>

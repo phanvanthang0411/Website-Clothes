@@ -1,51 +1,71 @@
-.common-slider-container {
-    width: 100%;
-    position: relative;
-    .common-left-arrow-btn {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        cursor: pointer;
-        z-index: 1;
-        &:hover {
-            opacity: 0.5;
+.common-slider {
+    &-container {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    &-btn-arrow {
+        &-left {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            cursor: pointer;
+            z-index: 1;
+            font-size: 22px;
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+        &-right {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 0;
+            cursor: pointer;
+            z-index: 1;
+            font-size: 22px;
+            &:hover {
+                opacity: 0.5;
+            }
         }
     }
-    .common-right-arrow-btn {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        right: 0;
-        cursor: pointer;
-        z-index: 1;
-        &:hover {
-            opacity: 0.5;
-        }
-    }
-    .common-slider-image {
-        width: inherit;
-        // animation: slideFromRight 2s ease forwards;
+    &-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 }
 
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 
-// @keyframes slideFromLeft {
-//     from {
-//         transform: translateX(-100%);
-
-//     }
-//     to {
-//         transform: translateX(0)
-//     }
-// }
-
-// @keyframes slideFromRight {
-//     from {
-//         transform: translateX(100%);
-//     }
-//     to {
-//         transform: translateX(0)
-//     }
-// }
-
-
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes slideToLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
