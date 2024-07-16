@@ -1,0 +1,70 @@
+.register-container {
+    display: flex;
+    border-top: 1px solid #e6e7e8;
+    align-items: center;
+    height: fit-content;
+    .register-content-left {
+        flex: 1;
+        text-align: center;
+        border-right: 1px solid #e6e7e8;
+        width: 50%;
+        height: 100%;
+        &-title {
+            font-size: 54px;
+            font-weight: 700;
+        }
+        &-items {
+            float: right;
+            padding: 0 16px;
+            .register-by-google {
+                width: 200px;
+                background-color: rgb(221, 75, 57);
+                color: rgb(255, 255, 255);
+                padding: 10px;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .register-by-facebook {
+                width: 200px;
+                background-color: rgb(59, 89, 152);
+                color: rgb(255, 255, 255);
+                padding: 10px;
+                border-radius: 8px;
+                font-weight: 500;
+                margin-top: 12px;
+                cursor: pointer;
+            }
+        }
+    }
+    .register-content-right {
+        flex: 1;
+        padding: 100px 100px 0;  
+        .register-form {
+            >input {
+                background-color: #e6e7e8;
+                border-radius: 8px;
+                width: 100%;
+                border: 1px solid #d5d4d4;
+                outline: none;
+                padding: 16px;
+                margin-bottom: 16px;
+                &:focus{
+                    border: 1px solid var(--base-nav-color);
+                }
+            }
+            >button{
+                color: #FFFFFF;
+                background: var(--button-color);
+                margin-top: 16px;
+                width: 100%;
+            }
+        }
+        &-back{
+            margin: 32px 0;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+    }
+}

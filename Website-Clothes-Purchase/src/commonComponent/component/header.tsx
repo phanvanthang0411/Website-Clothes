@@ -43,8 +43,10 @@ export function Header() {
             <div className='common-header-right'>
                 <LoginForm></LoginForm>
                 <div className='common-header-right-cart'>
-                    <LocalMallIcon sx={{ fontSize: '20px', opacity: '0.6' }} />
-                    <span style={{ marginLeft: '8px' }}>Giỏ hàng</span>
+                    <Link to={RoutePath.CheckOrder}>
+                        <LocalMallIcon sx={{ fontSize: '20px', opacity: '0.6' }} />
+                        <span style={{ marginLeft: '8px' }}>Giỏ hàng</span>
+                    </Link>
                 </div>
             </div>
         </header>

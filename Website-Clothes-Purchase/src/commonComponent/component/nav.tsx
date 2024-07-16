@@ -1,6 +1,6 @@
 import React from 'react'
 import '../scss/nav.scss'
-import { Dropdown, Menu } from 'antd'
+import { Dropdown, MenuProps } from 'antd'
 import { Link } from 'react-router-dom'
 import { RoutePath } from '../../structure/router/utils'
 
@@ -8,46 +8,65 @@ interface NavItem {
     id: string
     text: string
     url: string
-    item: Array<string>
+    items?: MenuProps['items']
 }
 const getNavs = (): NavItem[] => [
     {
         id: 'nav-shop',
         text: 'CỬA HÀNG',
-        url: RoutePath.HomeShop,
-        item: []
+        url: RoutePath.HomeShop
     },
     {
         id: 'nav-product',
         text: 'SẢN PHẨM',
         url: RoutePath.Collection,
-        item: ['ÁO POLO', 'QUẦN', 'SƠ MI']
+        items: [
+            {
+                key: '1',
+                label: <div>ÁO POLO</div>
+            },
+            {
+                key: '2',
+                label: <div>QUẦN</div>
+            },
+            {
+                key: '3',
+                label: <div>SƠ MI</div>
+            }
+        ]
     },
     {
         id: 'nav-policy-guideline',
         text: 'CHÍNH SÁCH-HƯỚNG DẪN',
         url: RoutePath.Index,
-        item: ['Chính sách đổi trả', 'Chính sách bảo hành']
+        items: [
+            {
+                key: '1',
+                label: <div>Chính sách bảo hành</div>
+            },
+            {
+                key: '2',
+                label: <div>Chính sách đổi trả</div>
+            }
+        ]
     },
     {
         id: 'nav-blog-news',
         text: 'TIN TỨC THỜI TRANG',
-        url: RoutePath.BlogNews,
-        item: []
+        url: RoutePath.BlogNews
     },
     {
         id: 'nav-check-order',
         text: 'KIỂM TRA ĐƠN HÀNG',
-        url: RoutePath.CheckOrder,
-        item: []
+        url: RoutePath.CheckOrder
     },
     {
         id: 'nav-contact',
         text: 'LIÊN HỆ',
-        url: RoutePath.Contact,
-        item: []
+        url: RoutePath.Contact
     }
 ]
+
 export class BaseNavigation extends React.Component<{}, {}> {
     constructor(props: {}) {
         super(props)
@@ -61,21 +80,12 @@ export class BaseNavigation extends React.Component<{}, {}> {
                 {navigation.map((_v, index) => {
                     return (
                         <Dropdown
-                            overlay={
-                                <Menu>
-                                    {_v.item.length > 0 &&
-                                        _v.item.map((a) => {
-                                            return (
-                                                <Menu.Item key='0'>
-                                                    <Link to={'/'}>{a}</Link>
-                                                </Menu.Item>
-                                            )
-                                        })}
-                                </Menu>
-                            }
+                            menu={{ items: _v.items ? _v.items : [] }}
+                            placement='bottom'
                             trigger={['hover']}
+                            key={`navigation-item-${index}`}
                         >
-                            <div className='common-navs-item' key={`navigation-item-${index}`}>
+                            <div id={_v.id} className='common-navs-item'>
                                 <Link to={_v.url}>{_v.text}</Link>
                             </div>
                         </Dropdown>
