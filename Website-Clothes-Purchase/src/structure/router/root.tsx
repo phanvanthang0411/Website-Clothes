@@ -1,36 +1,79 @@
+import { Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { RoutePath } from './utils'
+import { LoadingArea } from '../../commonComponent'
+import { BlogNews, CollectionAll, ContactAdmin, HomeShop, OrderCollection, Register } from '../../page'
 import FullLayout from '../layout'
-import { Register, HomeShop, BlogNews, CollectionAll, ContactAdmin, OrderCollection } from '../../page'
+import ProtectedRoute from './protectedRoute'
+import { RoutePath } from './utils'
 
 const router = createBrowserRouter([
     {
         path: RoutePath.Index,
-        element: <FullLayout />
+        element: (
+            <ProtectedRoute>
+                <FullLayout></FullLayout>
+            </ProtectedRoute>
+        )
     },
     {
         path: RoutePath.Register,
-        element: <Register />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <Register />
+                </ProtectedRoute>
+            </Suspense>
+        )
     },
     {
         path: RoutePath.HomeShop,
-        element: <HomeShop />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <HomeShop />
+                </ProtectedRoute>
+            </Suspense>
+        )
     },
     {
         path: RoutePath.Collection,
-        element: <CollectionAll />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <CollectionAll />
+                </ProtectedRoute>
+            </Suspense>
+        )
     },
     {
         path: RoutePath.BlogNews,
-        element: <BlogNews />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <BlogNews />
+                </ProtectedRoute>
+            </Suspense>
+        )
     },
     {
         path: RoutePath.Contact,
-        element: <ContactAdmin />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <ContactAdmin />
+                </ProtectedRoute>
+            </Suspense>
+        )
     },
     {
         path: RoutePath.CheckOrder,
-        element: <OrderCollection />
+        element: (
+            <Suspense fallback={<LoadingArea></LoadingArea>}>
+                <ProtectedRoute>
+                    <OrderCollection />
+                </ProtectedRoute>
+            </Suspense>
+        )
     }
 ])
 

@@ -5,6 +5,7 @@ import 'antd/dist/reset.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from 'react'
 import '../scss/loginForm.scss'
+import { RoutePath } from '../../structure/router/utils'
 
 export default function LoginForm() {
     const [isLogin] = useState<boolean>(false)
@@ -78,7 +79,7 @@ export default function LoginForm() {
             </Form.Item>
             <div className='form-login-body-footer'>
                 <div>
-                    Khách hàng mới? <a href=''>Tạo tài khoản</a>
+                    Khách hàng mới? <a href={RoutePath.Register}>Tạo tài khoản</a>
                 </div>
                 <div>
                     Quên mật khẩu? <a href=''>Khôi phục mật khẩu</a>

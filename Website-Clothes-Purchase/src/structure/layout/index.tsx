@@ -1,5 +1,5 @@
 import image from '../../assets/image'
-import { Header, BaseNavigation, ImageSlider } from '../../commonComponent'
+import { ImageSlider } from '../../commonComponent'
 
 export default function FullLayout() {
     const slides = [
@@ -10,8 +10,6 @@ export default function FullLayout() {
 
     return (
         <div className='main-body'>
-            <Header></Header>
-            <BaseNavigation></BaseNavigation>
             <ImageSlider slides={slides}></ImageSlider>
         </div>
     )
