@@ -1,4 +1,4 @@
-import { Header, BaseNavigation } from '../../commonComponent'
+import { Header, BaseNavigation, BaseFooter } from '../../commonComponent'
 
 interface IProtectedRoute {
     children: JSX.Element
@@ -9,6 +9,7 @@ const ProtectedRoute = ({ children }: IProtectedRoute) => {
             <Header></Header>
             <BaseNavigation></BaseNavigation>
             {children}
+            <BaseFooter></BaseFooter>
         </>
     )
 }
