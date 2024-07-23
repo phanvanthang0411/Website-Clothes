@@ -8,7 +8,7 @@ import { RoutePath } from '../../structure/router/utils'
 import '../scss/header.scss'
 import LoginForm from './loginForm'
 
-export function Header() {
+export default function Header() {
     const [currentValueSearch, setCurrentValueSearch] = useState<string>('')
 
     const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
