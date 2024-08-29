@@ -11,6 +11,10 @@ const Register = () => {
         setValueRadio(e.target.value)
     }
 
+    const handleClickBackButton = () => {
+        
+    }
+
     return (
         <React.Fragment>
             <div className='register-container'>
@@ -51,7 +55,7 @@ const Register = () => {
                         </div>
                         <button className='btn-register-user'>Đăng ký</button>
                     </form>
-                    <div className='register-content-right-back'>
+                    <div className='register-content-right-back' onClick={handleClickBackButton}>
                         <ArrowLeftOutlined style={{marginRight: '8px'}}/>
                         <div>Quay lại trang chủ</div>
                     </div>
