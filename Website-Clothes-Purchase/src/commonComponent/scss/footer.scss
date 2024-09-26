@@ -1,19 +1,19 @@
-#footer{
-    color: #FFFFFF;
+#footer {
+    color: #ffffff;
     background-color: #3f3f3f;
-    .footer-top{
+    .footer-top {
         padding: 25px 0;
         border-bottom: 1px solid #4c4b4b;
         display: flex;
         justify-content: center;
-        &-container{
+        &-container {
             display: flex;
             gap: 100px;
-            &-item{
+            &-item {
                 display: flex;
                 align-items: center;
                 color: #ccc;
-                &-icon{
+                &-icon {
                     border: 1px solid #c2a476;
                     border-radius: 3px;
                     font-size: 18px;
@@ -22,19 +22,27 @@
                     text-align: center;
                     margin-right: 8px;
                 }
-                &-title{
+                &-title {
                     font-size: 16px;
                     font-weight: 600;
                 }
-                &-description{
+                &-description {
                     font-size: 14px;
                 }
             }
         }
     }
-    .footer-center{
+    .footer-center {
         display: flex;
         justify-content: center;
         padding: 60px 0;
+        gap: 60px;
+    }
+    .footer-bottom {
+        padding: 24px 0 24px 60px;
+        background-color: #252525;
+        color: #e2e2e2;
+        font-size: 12px;
+        font-weight: 400;
     }
 }

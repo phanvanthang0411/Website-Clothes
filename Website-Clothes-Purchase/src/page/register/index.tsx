@@ -2,9 +2,11 @@ import { FacebookOutlined, GooglePlusOutlined, ArrowLeftOutlined } from '@ant-de
 import { Radio, RadioChangeEvent } from 'antd'
 import React, { useState } from 'react'
 import './scss/register.scss'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
     const [valueRadio, setValueRadio] = useState<number>(1)
+    const navigate = useNavigate()
 
     const onChangeRadio = (e: RadioChangeEvent) => {
         console.log('radio checked', e.target.value)
@@ -12,7 +14,7 @@ const Register = () => {
     }
 
     const handleClickBackButton = () => {
-        
+        navigate('/')
     }
 
     return (
@@ -55,8 +57,13 @@ const Register = () => {
                         </div>
                         <button className='btn-register-user'>Đăng ký</button>
                     </form>
-                    <div className='register-content-right-back' onClick={handleClickBackButton}>
-                        <ArrowLeftOutlined style={{marginRight: '8px'}}/>
+                    <div
+                        className='register-content-right-back'
+                        tabIndex={0}
+                        onClick={handleClickBackButton}
+                        onKeyDown={handleClickBackButton}
+                    >
+                        <ArrowLeftOutlined style={{ marginRight: '8px' }} />
                         <div>Quay lại trang chủ</div>
                     </div>
                 </div>
