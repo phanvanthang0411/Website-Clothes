@@ -1,6 +1,4 @@
 .common-header {
-    display: flex;
-    align-items: center;
     position: sticky;
     right: 0;
     top: 0;
@@ -8,6 +6,27 @@
     padding: 0 32px;
     background-color: #fff;
     z-index: 20;
+    &-introduce {
+        display: flex;
+        align-items: center;
+    }
+    &-navs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        z-index: 20;
+        .common-navs-item {
+            padding: 10px 0 15px;
+            margin: 0 40px;
+            font-size: 16px;
+            font-weight: var(--font-bold);
+            cursor: pointer;
+            &:hover {
+                color: var(--base-nav-color);
+            }
+        }
+    }
     &-logo {
         display: flex;
         align-items: center;

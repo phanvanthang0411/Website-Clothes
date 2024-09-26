@@ -2,30 +2,30 @@ import ClearIcon from '@mui/icons-material/Clear'
 import LocalMallIcon from '@mui/icons-material/LocalMall'
 import SearchIcon from '@mui/icons-material/Search'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import image from '../../assets/image'
 import { RoutePath } from '../../structure/router/utils'
 import '../scss/header.scss'
 import LoginForm from './loginForm'
-import { Dropdown, MenuProps } from 'antd'
+import { Menu, MenuProps } from 'antd'
 
 interface NavItem {
-    id: string
-    text: string
+    key: string
+    label: string
     url: string
-    items?: MenuProps['items']
+    children?: MenuProps['items']
 }
 const getNavs = (): NavItem[] => [
     {
-        id: 'nav-shop',
-        text: 'CỬA HÀNG',
+        key: 'nav-shop',
+        label: 'CỬA HÀNG',
         url: RoutePath.HomeShop
     },
     {
-        id: 'nav-product',
-        text: 'SẢN PHẨM',
+        key: 'nav-product',
+        label: 'SẢN PHẨM',
         url: RoutePath.Collection,
-        items: [
+        children: [
             {
                 key: '1',
                 label: <div>ÁO POLO</div>
@@ -41,10 +41,10 @@ const getNavs = (): NavItem[] => [
         ]
     },
     {
-        id: 'nav-policy-guideline',
-        text: 'CHÍNH SÁCH-HƯỚNG DẪN',
+        key: 'nav-policy-guideline',
+        label: 'CHÍNH SÁCH-HƯỚNG DẪN',
         url: RoutePath.Index,
-        items: [
+        children: [
             {
                 key: '1',
                 label: <div>Chính sách bảo hành</div>
@@ -56,29 +56,43 @@ const getNavs = (): NavItem[] => [
         ]
     },
     {
-        id: 'nav-blog-news',
-        text: 'TIN TỨC THỜI TRANG',
+        key: 'nav-blog-news',
+        label: 'TIN TỨC THỜI TRANG',
         url: RoutePath.BlogNews
     },
     {
-        id: 'nav-check-order',
-        text: 'KIỂM TRA ĐƠN HÀNG',
+        key: 'nav-check-order',
+        label: 'KIỂM TRA ĐƠN HÀNG',
         url: RoutePath.CheckOrder
     },
     {
-        id: 'nav-contact',
-        text: 'LIÊN HỆ',
+        key: 'nav-contact',
+        label: 'LIÊN HỆ',
         url: RoutePath.Contact
     }
 ]
 
 export default function Header() {
     const [currentValueSearch, setCurrentValueSearch] = useState<string>('')
+    const [currentKeyMenu, setCurrentKeyMenu] = useState<string>('')
 
     const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentValueSearch(e.target.value)
     }
     const navigation: NavItem[] = getNavs()
+    const navigate = useNavigate()
+
+    const onClickCart = () => {
+        navigate(RoutePath.CheckOrder)
+    }
+
+    const hanldeChangeMenu = (e: React.ChangeEvent) => {
+
+        console.log(e)
+        // setCurrentKeyMenu(e.key)
+        setCurrentKeyMenu(e.key)
+    }
+
     return (
         <header className='common-header' id='header'>
             <div className='common-header-introduce'>
@@ -107,29 +121,21 @@ export default function Header() {
                 </div>
                 <div className='common-header-right'>
                     <LoginForm></LoginForm>
-                    <div className='common-header-right-cart'>
-                        <Link to={RoutePath.CheckOrder}>
-                            <LocalMallIcon sx={{ fontSize: '20px', opacity: '0.6' }} />
-                            <span style={{ marginLeft: '8px' }}>Giỏ hàng</span>
-                        </Link>
+                    <div className='common-header-right-cart' onClick={onClickCart}>
+                        <LocalMallIcon sx={{ fontSize: '20px', opacity: '0.6' }} />
+                        <span style={{ marginLeft: '8px' }}>Giỏ hàng</span>
                     </div>
                 </div>
             </div>
             <div className='common-header-navs'>
-                {navigation.map((_v, index) => {
-                    return (
-                        <Dropdown
-                            menu={{ items: _v.items ? _v.items : [] }}
-                            placement='bottom'
-                            trigger={['hover']}
-                            key={`navigation-item-${index}`}
-                        >
-                            <div id={_v.id} className='common-navs-item'>
-                                <Link to={_v.url}>{_v.text}</Link>
-                            </div>
-                        </Dropdown>
-                    )
-                })}
+                {
+                    <Menu
+                        onClick={hanldeChangeMenu}
+                        selectedKeys={[currentKeyMenu]}
+                        mode='horizontal'
+                        items={navigation}
+                    />
+                }
             </div>
         </header>
     )

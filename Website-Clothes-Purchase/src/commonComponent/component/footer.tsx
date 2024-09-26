@@ -91,7 +91,7 @@ const BaseFooter = () => {
                     </ul>
                 </div>
             </div>
-            <div className='footer-bottom'></div>
+            <div className='footer-bottom'>©2024 Kevin Phan. All rights reserved.</div>
         </footer>
     )
 }
